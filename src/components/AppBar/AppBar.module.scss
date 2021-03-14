@@ -1,0 +1,17 @@
+.AppBar {
+  // position: fixed;
+  display: flex;
+  // padding: 20px 50px;
+
+  // min-height: 80px;
+
+  box-shadow: 7px 7px 13px 0px rgba(0, 0, 0, 0.38);
+
+  .panel {
+    width: 100%;
+    background-image: url('../../images/movies.jpg');
+    // background-repeat: no-repeat;
+    // background-position: center;
+    background-size: contain;
+  }
+}

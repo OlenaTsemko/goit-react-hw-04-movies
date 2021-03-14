@@ -1,46 +1,32 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+// import { Link } from 'react-router-dom';
 
-import moviesApi from 'services/moviesApi';
+import MoviesList from 'components/MoviesList';
 
-const MoviesPage = () => {
+import Form from 'components/Form';
+
+// import moviesApi from 'services/moviesApi';
+
+const MoviesPage = props => {
   const [movies, setMovies] = useState([]);
-  const [query, setQuery] = useState('');
 
-  useEffect(() => {
-    const fetchMovies = () =>
-      moviesApi
-        .fetchSearchMovies(query)
-        .then(({ results }) => setMovies(results));
-
-    query ? fetchMovies() : setMovies([]);
-  }, [query]);
-
-  const handleChangeQuery = event => {
-    const { value } = event.currentTarget;
-
-    setQuery(value);
-  };
-
-  const handleSubmit = event => {
-    event.preventDefault();
-
-    console.log(movies);
-  };
+  const handleFormSubmit = results => setMovies(results);
 
   return (
     <>
-      <h1>MoviesPage</h1>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="">
-          <input type="text" value={query} onChange={handleChangeQuery} />
-        </label>
+      <Form onFormSubmit={handleFormSubmit} />
 
-        <button type="submit">Search</button>
-      </form>
+      <MoviesList movies={movies} />
 
-      {movies.map(movie => (
-        <li key={movie.id}>{movie.original_title}</li>
-      ))}
+      {/* <ul>
+        {movies.map(movie => (
+          <li key={movie.id}>
+            <Link to={`${props.match.url}/${movie.id}`}>
+              {movie.original_title}
+            </Link>
+          </li>
+        ))}
+      </ul> */}
     </>
   );
 };

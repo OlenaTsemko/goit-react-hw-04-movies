@@ -1,0 +1,20 @@
+.Navigation {
+  display: flex;
+  padding: 20px 50px;
+  background-color: #000000;
+  color: white;
+
+  .NavLink {
+    padding: 10px 30px;
+    color: white;
+    border-radius: 8px;
+  }
+
+  .NavLinkActive {
+    background-color: #ae8026;
+    color: white;
+    border-radius: 8px;
+
+    box-shadow: 7px 7px 13px 0px rgba(0, 0, 0, 0.38);
+  }
+}

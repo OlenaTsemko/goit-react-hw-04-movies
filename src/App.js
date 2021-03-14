@@ -1,30 +1,31 @@
-import { Route, Switch } from 'react-router-dom';
-import { NavLink } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
+import Container from 'components/Container';
+import AppBar from 'components/AppBar';
 import HomePage from 'pages/HomePage';
 import MoviesPage from 'pages/MoviesPage';
-import NotFound from 'pages/NotFound';
+import MovieDetailsPage from 'pages/MovieDetailsPage';
+
+import routes from 'routes';
 
 import 'App.scss';
 
 const App = () => {
   return (
-    <div className="App">
-      <ul>
-        <li>
-          <NavLink to="/">Home</NavLink>
-        </li>
-        <li>
-          <NavLink to="/movies">Movies</NavLink>
-        </li>
-      </ul>
+    <>
+      <AppBar />
 
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route path="/movies" component={MoviesPage} />
-        <Route component={NotFound} />
-      </Switch>
-    </div>
+      <Container>
+        <Switch>
+          <Route exact path={routes.home} component={HomePage} />
+          <Route path={routes.movieDetails} component={MovieDetailsPage} />
+          <Route path={routes.movies} component={MoviesPage} />
+          <Route>
+            <Redirect to={routes.home} />
+          </Route>
+        </Switch>
+      </Container>
+    </>
   );
 };
 

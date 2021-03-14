@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 
+import MoviesList from 'components/MoviesList';
+
 import moviesApi from 'services/moviesApi';
 
 const HomePage = () => {
@@ -9,14 +11,9 @@ const HomePage = () => {
     moviesApi.fetchTrendingMovies().then(({ results }) => setMovies(results));
   }, []);
 
-  return (
-    <>
-      <h1>Homepage</h1>
-      {movies.map(movie => (
-        <li key={movie.id}>{movie.original_title}</li>
-      ))}
-    </>
-  );
+  // console.log(movies);
+
+  return <MoviesList movies={movies} />;
 };
 
 export default HomePage;

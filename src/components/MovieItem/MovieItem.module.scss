@@ -1,0 +1,47 @@
+.MovieItem {
+  margin: 15px;
+  height: 396px;
+
+  a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 20px;
+
+    width: 280px;
+    height: 100%;
+
+    // background-color: rgb(111, 91, 66);
+
+    background-image: linear-gradient(
+      120deg,
+      rgba(204, 179, 122, 0.7) 0%,
+      rgba(17, 17, 16, 0.7) 100%
+    );
+
+    border-radius: 8px;
+    box-shadow: 7px 7px 13px 0px rgba(0, 0, 0, 0.38);
+
+    &:hover,
+    &:focus {
+      background-color: #ae8026;
+
+      outline: none;
+    }
+
+    img {
+      width: 200px;
+      height: 300px;
+    }
+  }
+
+  .movieTitle {
+    margin-top: 20px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.18;
+
+    color: white;
+  }
+}
