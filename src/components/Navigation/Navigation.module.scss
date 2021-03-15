@@ -6,15 +6,24 @@
 
   .NavLink {
     padding: 10px 30px;
+    width: 110px;
     color: white;
     border-radius: 8px;
+
+    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover {
+      color: rgb(204, 179, 122);
+      box-shadow: inset 2px 4px 18px 1px rgba(243, 224, 185, 0.38);
+    }
   }
 
   .NavLinkActive {
     background-color: #ae8026;
-    color: white;
-    border-radius: 8px;
 
-    box-shadow: 7px 7px 13px 0px rgba(0, 0, 0, 0.38);
+    &:hover {
+      color: #000000;
+      box-shadow: inset 2px 4px 18px 1px rgba(0, 0, 0, 0.38);
+    }
   }
 }

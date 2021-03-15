@@ -1,0 +1,59 @@
+.Form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 30px;
+
+  .FormInput {
+    margin-right: 20px;
+
+    padding: 5px 30px;
+
+    width: 300px;
+    height: 60px;
+    border-radius: 8px;
+    font-size: 20px;
+
+    background-color: rgb(204, 179, 122);
+    color: rgb(53, 34, 16);
+
+    border: transparent;
+    box-shadow: inset 1px 1px 20px 6px rgba(53, 34, 16, 0.4);
+
+    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    &::placeholder {
+      color: rgb(53, 34, 16);
+    }
+
+    &:hover,
+    &:focus {
+      background-color: rgb(174, 128, 38);
+      color: #ffffff;
+      outline: none;
+
+      &::placeholder {
+        color: #ffffff;
+      }
+    }
+  }
+  .FormBtn {
+    padding: 10px 30px;
+
+    background-color: #ae8026;
+    color: white;
+    border-radius: 8px;
+
+    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    border: none;
+    outline: none;
+
+    &:hover {
+      background-color: #000000;
+      color: rgb(204, 179, 122);
+      box-shadow: inset 2px 4px 18px 1px rgba(243, 224, 185, 0.38);
+    }
+  }
+}

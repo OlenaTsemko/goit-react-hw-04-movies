@@ -2,6 +2,8 @@ import { useState } from 'react';
 
 import moviesApi from 'services/moviesApi';
 
+import styles from './Form.module.scss';
+
 const Form = ({ onFormSubmit }) => {
   const [searchMovie, setSearchMovie] = useState('');
 
@@ -20,9 +22,10 @@ const Form = ({ onFormSubmit }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="">
+    <form className={styles.Form} onSubmit={handleSubmit}>
+      <label className={styles.FormLabel} htmlFor="">
         <input
+          className={styles.FormInput}
           type="text"
           value={searchMovie}
           onChange={handleChangeQuery}
@@ -30,7 +33,9 @@ const Form = ({ onFormSubmit }) => {
         />
       </label>
 
-      <button type="submit">Search</button>
+      <button className={styles.FormBtn} type="submit">
+        Search
+      </button>
     </form>
   );
 };

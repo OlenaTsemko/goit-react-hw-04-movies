@@ -1,0 +1,32 @@
+.MovieDetails {
+  display: flex;
+
+  margin: 20px;
+  padding: 20px;
+
+  border-radius: 8px;
+
+  box-shadow: 7px 7px 13px 0px rgba(0, 0, 0, 0.38);
+
+  img {
+    border-radius: 8px;
+  }
+
+  .MovieDetailsWrapper {
+    margin: 0 30px;
+
+    .title {
+      margin-bottom: 20px;
+    }
+    .detailWrapper {
+      display: flex;
+      margin-bottom: 10px;
+    }
+    .titleDetails {
+      width: 120px;
+    }
+    .text {
+      margin-left: 32px;
+    }
+  }
+}

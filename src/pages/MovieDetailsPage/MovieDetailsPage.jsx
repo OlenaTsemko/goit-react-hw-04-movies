@@ -1,10 +1,13 @@
 import { useState, useEffect } from 'react';
 import { Route, NavLink } from 'react-router-dom';
 
+import MovieDetails from 'components/MovieDetails';
 import Cast from 'components/Cast';
 import Reviews from 'components/Reviews';
 
 import moviesApi from 'services/moviesApi';
+
+import styles from './MovieDetailsPage.module.scss';
 
 const MovieDetailsPage = props => {
   const [movie, setMovie] = useState(null);
@@ -16,30 +19,33 @@ const MovieDetailsPage = props => {
     moviesApi.fetchMovieDetails(movieId).then(data => setMovie(data));
   }, [movieId]);
 
-  // console.log(movie);
-  // console.log(props.match.path);
-
   return (
     movie && (
       <>
-        <h1>MovieDetailsPage {movieId} </h1>
-
-        <img
-          src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
-          alt={`poster of ${movie.original_title}`}
-        />
-        <h2>{movie.original_title}</h2>
-        <p>{movie.overview}</p>
-
-        <p>Additional information</p>
-        <ul>
-          <li>
-            <NavLink to={`${url}/cast`}>Cast</NavLink>
-          </li>
-          <li>
-            <NavLink to={`${url}/reviews`}>Reviews</NavLink>
-          </li>
-        </ul>
+        <MovieDetails movie={movie} />
+        <div className={styles.addInfo}>
+          <h3 className={styles.titleAddInfo}>Additional information</h3>
+          <ul className={styles.listAddInfo}>
+            <li>
+              <NavLink
+                to={`${url}/cast`}
+                className={styles.NavLink}
+                activeClassName={styles.NavLinkActive}
+              >
+                Cast
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to={`${url}/reviews`}
+                className={styles.NavLink}
+                activeClassName={styles.NavLinkActive}
+              >
+                Reviews
+              </NavLink>
+            </li>
+          </ul>
+        </div>
 
         <Route
           path={`${path}/cast`}

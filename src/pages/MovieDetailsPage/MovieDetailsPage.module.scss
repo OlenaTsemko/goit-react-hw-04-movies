@@ -1,0 +1,28 @@
+.addInfo {
+  text-align: center;
+
+  .listAddInfo {
+    display: flex;
+    justify-content: center;
+
+    margin: 20px;
+  }
+
+  .NavLink {
+    padding: 10px 30px;
+    width: 110px;
+    color: white;
+    border-radius: 8px;
+
+    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover {
+      color: #000000;
+      box-shadow: inset 2px 4px 18px 1px rgba(53, 34, 16, 0.38);
+    }
+  }
+
+  .NavLinkActive {
+    background-color: #ae8026;
+  }
+}
