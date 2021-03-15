@@ -5,9 +5,24 @@
 
   margin-bottom: 30px;
 
-  .FormInput {
+  @media screen and (max-width: 586px) {
+    flex-direction: column;
+  }
+
+  .FormLabel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-right: 20px;
 
+    @media screen and (max-width: 586px) {
+      margin-right: 0;
+      margin-bottom: 30px;
+      width: 300px;
+    }
+  }
+
+  .FormInput {
     padding: 5px 30px;
 
     width: 300px;
@@ -37,12 +52,17 @@
         color: #ffffff;
       }
     }
+
+    @media screen and (max-width: 586px) {
+      width: 280px;
+    }
   }
+
   .FormBtn {
     padding: 10px 30px;
 
     background-color: #ae8026;
-    color: white;
+    color: #ffffff;
     border-radius: 8px;
 
     transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -50,7 +70,8 @@
     border: none;
     outline: none;
 
-    &:hover {
+    &:hover,
+    &:focus {
       background-color: #000000;
       color: rgb(204, 179, 122);
       box-shadow: inset 2px 4px 18px 1px rgba(243, 224, 185, 0.38);

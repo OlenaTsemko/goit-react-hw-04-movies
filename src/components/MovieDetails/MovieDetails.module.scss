@@ -9,6 +9,7 @@
   box-shadow: 7px 7px 13px 0px rgba(0, 0, 0, 0.38);
 
   img {
+    width: 300px;
     border-radius: 8px;
   }
 
@@ -28,5 +29,33 @@
     .text {
       margin-left: 32px;
     }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .MovieDetails {
+    flex-direction: column;
+    margin: 20px auto;
+    width: 420px;
+
+    img {
+      margin: 0 auto 20px;
+    }
+
+    .MovieDetailsWrapper {
+      .detailWrapper {
+        flex-direction: column;
+      }
+
+      .text {
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .MovieDetails {
+    width: 280px;
   }
 }

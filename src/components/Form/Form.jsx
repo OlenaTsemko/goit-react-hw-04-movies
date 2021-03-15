@@ -16,9 +16,10 @@ const Form = ({ onFormSubmit }) => {
   const handleSubmit = event => {
     event.preventDefault();
 
-    moviesApi
-      .fetchSearchMovies(searchMovie)
-      .then(({ results }) => onFormSubmit(results));
+    searchMovie &&
+      moviesApi
+        .fetchSearchMovies(searchMovie)
+        .then(({ results }) => onFormSubmit(results));
   };
 
   return (

@@ -4,6 +4,10 @@
   background-color: #000000;
   color: white;
 
+  @media screen and (max-width: 586px) {
+    justify-content: center;
+  }
+
   .NavLink {
     padding: 10px 30px;
     width: 110px;

@@ -4,8 +4,8 @@ import styles from './MoviesList.module.scss';
 
 const MoviesList = ({ movies }) => (
   <ul className={styles.MoviesList}>
-    {movies.map(movie => (
-      <MovieItem key={movie.id} movie={movie} />
+    {movies.map(({ id, poster_path, original_title }) => (
+      <MovieItem key={id} id={id} poster={poster_path} title={original_title} />
     ))}
   </ul>
 );

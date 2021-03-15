@@ -7,11 +7,21 @@
 
   box-shadow: 7px 7px 13px 0px rgba(0, 0, 0, 0.38);
 
+  @media screen and (max-width: 586px) {
+    flex-direction: column;
+    min-height: 160px;
+  }
+
   .panel {
     width: 100%;
+    background-color: #000000;
     background-image: url('../../images/movies.jpg');
-    // background-repeat: no-repeat;
-    // background-position: center;
     background-size: contain;
+
+    @media screen and (max-width: 586px) {
+      min-height: 80px;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
   }
 }

@@ -13,7 +13,7 @@ const MovieDetails = ({ movie }) => {
   return (
     <div className={styles.MovieDetails}>
       <img
-        src={`https://image.tmdb.org/t/p/w200${poster_path}`}
+        src={`https://image.tmdb.org/t/p/w300${poster_path}`}
         alt={`poster of ${original_title}`}
       />
 
