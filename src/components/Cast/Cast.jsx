@@ -1,17 +1,17 @@
 import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 import moviesApi from 'services/moviesApi';
 import supermanPlaceholder from 'images/supermanPlaceholder.png';
 import superwomanPlaceholder from 'images/superwomanPlaceholder.jpg';
-
 import styles from './Cast.module.scss';
 
-const Cast = props => {
+const Cast = ({ movieId }) => {
   const [cast, setCast] = useState([]);
 
   useEffect(() => {
-    moviesApi.fetchMovieCredits(props.movieId).then(data => setCast(data));
-  }, [props.movieId]);
+    moviesApi.fetchMovieCredits(movieId).then(data => setCast(data));
+  }, [movieId]);
 
   return (
     cast && (
@@ -34,13 +34,17 @@ const Cast = props => {
                 alt={`poster of ${original_name}`}
               />
             )}
-            ,<h2 className={styles.castName}>{original_name}</h2>
+            <h2 className={styles.castName}>{original_name}</h2>
             <p>Character: {character} </p>
           </li>
         ))}
       </ul>
     )
   );
+};
+
+Cast.propTypes = {
+  movieId: PropTypes.string.isRequired,
 };
 
 export default Cast;

@@ -1,0 +1,19 @@
+.MoviePreview {
+  text-align: center;
+  img {
+    width: 250px;
+    height: 300px;
+    object-fit: cover;
+
+    border-radius: 8px;
+  }
+
+  .movieTitle {
+    margin-top: 20px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.18;
+
+    color: white;
+  }
+}

@@ -1,14 +1,15 @@
 import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 import moviesApi from 'services/moviesApi';
 import styles from './Reviews.module.scss';
 
-const Reviews = props => {
+const Reviews = ({ movieId }) => {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    moviesApi.fetchMovieReviews(props.movieId).then(data => setReviews(data));
-  }, [props.movieId]);
+    moviesApi.fetchMovieReviews(movieId).then(data => setReviews(data));
+  }, [movieId]);
 
   return reviews.length > 0 ? (
     <ul className={styles.Reviews}>
@@ -22,6 +23,10 @@ const Reviews = props => {
   ) : (
     <p>We don't have any reviews for this movie</p>
   );
+};
+
+Reviews.propTypes = {
+  movieId: PropTypes.string.isRequired,
 };
 
 export default Reviews;

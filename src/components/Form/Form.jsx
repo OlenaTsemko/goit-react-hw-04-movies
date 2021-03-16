@@ -1,7 +1,7 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 import moviesApi from 'services/moviesApi';
-
 import styles from './Form.module.scss';
 
 const Form = ({ onFormSubmit }) => {
@@ -39,6 +39,10 @@ const Form = ({ onFormSubmit }) => {
       </button>
     </form>
   );
+};
+
+Form.propTypes = {
+  onFormSubmit: PropTypes.func.isRequired,
 };
 
 export default Form;

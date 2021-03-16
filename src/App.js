@@ -8,8 +8,6 @@ import MovieDetailsPage from 'pages/MovieDetailsPage';
 
 import routes from 'routes';
 
-import 'App.scss';
-
 const App = () => {
   return (
     <>

@@ -8,7 +8,7 @@ axios.defaults.params = { api_key: API_KEY };
 
 const fetchTrendingMovies = async () => {
   try {
-    const { data } = await axios.get(`/trending/movie/day?`);
+    const { data } = await axios.get(`/trending/movie/day?page=1`);
 
     return data;
   } catch (error) {

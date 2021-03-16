@@ -1,5 +1,4 @@
 import Navigation from 'components/Navigation';
-
 import styles from './AppBar.module.scss';
 
 const AppBar = () => (

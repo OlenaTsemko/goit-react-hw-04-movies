@@ -22,7 +22,8 @@ const MovieDetailsPage = props => {
   return (
     movie && (
       <>
-        <MovieDetails movie={movie} />
+        <MovieDetails {...movie} />
+
         <div className={styles.addInfo}>
           <h3 className={styles.titleAddInfo}>Additional information</h3>
           <ul className={styles.listAddInfo}>
