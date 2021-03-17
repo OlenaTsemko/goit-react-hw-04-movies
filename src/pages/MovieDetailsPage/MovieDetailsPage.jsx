@@ -6,6 +6,7 @@ import Cast from 'components/Cast';
 import Reviews from 'components/Reviews';
 
 import moviesApi from 'services/moviesApi';
+import routes from 'routes';
 
 import styles from './MovieDetailsPage.module.scss';
 
@@ -19,11 +20,27 @@ const MovieDetailsPage = props => {
     moviesApi.fetchMovieDetails(movieId).then(data => setMovie(data));
   }, [movieId]);
 
+  const handleGoBack = () => {
+    const { history, location } = props;
+
+    // location.state && location.state.from
+    //   ? history.push(location.state.from)
+    //   : history.push(routes.home);
+
+    history.push(location?.state?.from || routes[0].path); // аналогично верхнему тернарнику
+  };
+
   return (
     movie && (
       <>
+        <button
+          className={styles.goBackBtn}
+          type="button"
+          onClick={handleGoBack}
+        >
+          Go back
+        </button>
         <MovieDetails {...movie} />
-
         <div className={styles.addInfo}>
           <h3 className={styles.titleAddInfo}>Additional information</h3>
           <ul className={styles.listAddInfo}>

@@ -5,11 +5,18 @@ import MoviePreview from 'components/MoviePreview';
 
 import styles from './MoviesList.module.scss';
 
-const MoviesList = ({ movies }) => (
+const MoviesList = ({ movies, location }) => (
   <ul className={styles.MoviesList}>
     {movies.map(({ id, poster_path, original_title }) => (
       <li key={id} className={styles.MovieItem}>
-        <Link to={`/movies/${id}`}>
+        <Link
+          to={{
+            pathname: `/movies/${id}`,
+            state: {
+              from: location,
+            },
+          }}
+        >
           <MoviePreview poster={poster_path} title={original_title} />
         </Link>
       </li>

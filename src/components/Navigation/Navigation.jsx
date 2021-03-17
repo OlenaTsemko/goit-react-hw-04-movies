@@ -5,7 +5,21 @@ import styles from './Navigation.module.scss';
 
 const Navigation = () => (
   <nav className={styles.Navigation}>
-    <NavLink
+    {routes.map(({ path, label, exact, showInNav }) =>
+      showInNav ? (
+        <NavLink
+          key={path}
+          exact={exact}
+          to={path}
+          className={styles.NavLink}
+          activeClassName={styles.NavLinkActive}
+        >
+          {label}
+        </NavLink>
+      ) : null,
+    )}
+
+    {/* <NavLink
       exact
       to={routes.home}
       className={styles.NavLink}
@@ -21,7 +35,7 @@ const Navigation = () => (
       activeClassName={styles.NavLinkActive}
     >
       Movies
-    </NavLink>
+    </NavLink> */}
   </nav>
 );
 
