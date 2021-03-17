@@ -4,13 +4,14 @@ import MoviesList from 'components/MoviesList';
 import Form from 'components/Form';
 
 const MoviesPage = props => {
-  const [movies, setMovies] = useState([]);
+  const { location } = props;
+  const [movies, setMovies] = useState(location?.state?.movies || []);
 
   const handleFormSubmit = results => setMovies(results);
 
   return (
     <>
-      <Form onFormSubmit={handleFormSubmit} />
+      <Form {...props} onFormSubmit={handleFormSubmit} />
       <MoviesList {...props} movies={movies} />
     </>
   );

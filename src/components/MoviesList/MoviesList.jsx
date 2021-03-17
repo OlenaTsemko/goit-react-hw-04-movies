@@ -11,6 +11,7 @@ const MoviesList = ({ movies, location }) => (
       <li key={id} className={styles.MovieItem}>
         <Link
           to={{
+            // ...location,
             pathname: `/movies/${id}`,
             state: {
               from: location,

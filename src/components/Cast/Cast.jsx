@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import moviesApi from 'services/moviesApi';
@@ -6,7 +7,7 @@ import supermanPlaceholder from 'images/supermanPlaceholder.png';
 import superwomanPlaceholder from 'images/superwomanPlaceholder.jpg';
 import styles from './Cast.module.scss';
 
-const Cast = ({ movieId }) => {
+const Cast = ({ movieId, location }) => {
   const [cast, setCast] = useState([]);
 
   useEffect(() => {
@@ -47,4 +48,4 @@ Cast.propTypes = {
   movieId: PropTypes.string.isRequired,
 };
 
-export default Cast;
+export default withRouter(Cast);

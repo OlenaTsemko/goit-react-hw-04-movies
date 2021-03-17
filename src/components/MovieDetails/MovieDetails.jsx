@@ -24,18 +24,25 @@ const MovieDetails = ({
 
       <div className={styles.MovieDetailsWrapper}>
         <h2 className={styles.title}>{original_title}</h2>
-        <div className={styles.detailWrapper}>
-          <p className={styles.titleDetails}>Release Date: </p>
-          <span>{release_date}</span>
-        </div>
-        <div className={styles.detailWrapper}>
-          <p className={styles.titleDetails}>User Score: </p>
-          <span>{vote_average}/10</span>
-        </div>
-        <div className={styles.detailWrapper}>
-          <h3>Overview: </h3>
-          <p className={styles.text}>{overview}</p>
-        </div>
+
+        {release_date && (
+          <div className={styles.detailWrapper}>
+            <p className={styles.titleDetails}>Release Date: </p>
+            <span>{release_date}</span>
+          </div>
+        )}
+        {vote_average && (
+          <div className={styles.detailWrapper}>
+            <p className={styles.titleDetails}>User Score: </p>
+            <span>{vote_average}/10</span>
+          </div>
+        )}
+        {overview && (
+          <div className={styles.detailWrapper}>
+            <h3>Overview: </h3>
+            <p className={styles.text}>{overview}</p>
+          </div>
+        )}
         {genres.length > 0 && (
           <div className={styles.detailWrapper}>
             <h3 className={styles.titleDetails}>Genres:</h3>

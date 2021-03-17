@@ -5,7 +5,7 @@ import Container from 'components/Container';
 import AppBar from 'components/AppBar';
 import routes from 'routes';
 
-import MyLoader from 'components/Loader';
+import Loader from 'components/Loader';
 
 // const HomePage = lazy(() =>
 //   import('pages/HomePage' /* webpackChunkName: "HomePage" */),
@@ -23,7 +23,7 @@ const App = () => {
       <AppBar />
 
       <Container>
-        <Suspense fallback={<MyLoader />}>
+        <Suspense fallback={<Loader />}>
           <Switch>
             {routes.map(({ path, exact, component: Component }) => (
               <Route

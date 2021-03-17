@@ -1,11 +1,14 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import queryString from 'query-string';
 
 import moviesApi from 'services/moviesApi';
 import styles from './Form.module.scss';
 
-const Form = ({ onFormSubmit }) => {
-  const [searchMovie, setSearchMovie] = useState('');
+const Form = ({ onFormSubmit, location, history }) => {
+  const [searchMovie, setSearchMovie] = useState(
+    queryString.parse(location.search).query || '',
+  );
 
   const handleChangeQuery = event => {
     const { value } = event.currentTarget;
@@ -17,9 +20,18 @@ const Form = ({ onFormSubmit }) => {
     event.preventDefault();
 
     searchMovie &&
-      moviesApi
-        .fetchSearchMovies(searchMovie)
-        .then(({ results }) => onFormSubmit(results));
+      moviesApi.fetchSearchMovies(searchMovie).then(({ results }) => {
+        onFormSubmit(results);
+
+        history.push({
+          ...location,
+          pathname: location.pathname,
+          search: `?query=${searchMovie}`,
+          state: {
+            movies: results,
+          },
+        });
+      });
   };
 
   return (
