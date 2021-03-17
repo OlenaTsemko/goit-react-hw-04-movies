@@ -3,6 +3,7 @@ import { Route, NavLink } from 'react-router-dom';
 
 import MovieDetails from 'components/MovieDetails';
 import Loader from 'components/Loader';
+import Notification from 'components/Notification';
 import Cast from 'components/Cast';
 import Reviews from 'components/Reviews';
 
@@ -19,13 +20,18 @@ import styles from './MovieDetailsPage.module.scss';
 
 const MovieDetailsPage = props => {
   const [movie, setMovie] = useState(null);
+  const [message, setMessage] = useState('');
 
   const { movieId } = props.match.params;
   const { url, path } = props.match;
   const { history, location } = props;
 
   useEffect(() => {
-    moviesApi.fetchMovieDetails(movieId).then(data => setMovie(data));
+    moviesApi.fetchMovieDetails(movieId).then(data => {
+      setMovie(data);
+
+      data && setMessage('No such movie found');
+    });
   }, [movieId]);
 
   const handleGoBack = () => {
@@ -83,6 +89,8 @@ const MovieDetailsPage = props => {
       />
       {/* </Suspense> */}
     </>
+  ) : message ? (
+    <Notification message={message} />
   ) : (
     <Loader />
   );
