@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import MoviesList from 'components/MoviesList';
-import Form from 'components/Form';
+import SearchBar from 'components/SearchBar';
 
 const MoviesPage = props => {
   const { location } = props;
@@ -11,7 +11,7 @@ const MoviesPage = props => {
 
   return (
     <>
-      <Form {...props} onFormSubmit={handleFormSubmit} />
+      <SearchBar {...props} onFormSubmit={handleFormSubmit} />
       <MoviesList {...props} movies={movies} />
     </>
   );
