@@ -70,7 +70,8 @@ const MoviesPage = props => {
         message={message}
         searchMovie={searchMovie}
       />
-      {loading && <Loader />}
+
+      {loading && queryString.parse(location.search).query && <Loader />}
       <MoviesList {...props} movies={movies} />
     </>
   );
