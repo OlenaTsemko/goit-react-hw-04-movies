@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { Route, NavLink } from 'react-router-dom';
 
 import MovieDetails from 'components/MovieDetails';
-import Loader from 'components/Loader';
 import Notification from 'components/Notification';
 import Cast from 'components/Cast';
 import Reviews from 'components/Reviews';
@@ -28,9 +27,15 @@ const MovieDetailsPage = props => {
 
   useEffect(() => {
     moviesApi.fetchMovieDetails(movieId).then(data => {
+      if (isNaN(movieId)) {
+        setMessage('No such movie found');
+        setMovie(null);
+        return;
+      }
+
       setMovie(data);
 
-      data && setMessage('No such movie found');
+      data ?? setMessage('No such movie found');
     });
   }, [movieId]);
 
@@ -48,7 +53,6 @@ const MovieDetailsPage = props => {
         Go back
       </button>
       <MovieDetails {...movie} />
-
       <div className={styles.addInfo}>
         <h3 className={styles.titleAddInfo}>Additional information</h3>
         <ul className={styles.listAddInfo}>
@@ -89,10 +93,8 @@ const MovieDetailsPage = props => {
       />
       {/* </Suspense> */}
     </>
-  ) : message ? (
-    <Notification message={message} />
   ) : (
-    <Loader />
+    <Notification message={message} />
   );
 };
 

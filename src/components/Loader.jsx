@@ -6,8 +6,6 @@ const loader = css`
   margin: 0 auto;
 `;
 
-const Loader = () => {
-  return <RingLoader css={loader} />;
-};
+const Loader = () => <RingLoader css={loader} />;
 
 export default Loader;

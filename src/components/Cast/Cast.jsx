@@ -7,7 +7,7 @@ import supermanPlaceholder from 'images/supermanPlaceholder.png';
 import superwomanPlaceholder from 'images/superwomanPlaceholder.jpg';
 import styles from './Cast.module.scss';
 
-const Cast = ({ movieId, location }) => {
+const Cast = ({ movieId }) => {
   const [cast, setCast] = useState([]);
 
   useEffect(() => {
