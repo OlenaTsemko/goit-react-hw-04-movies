@@ -18,12 +18,15 @@ import styles from './MovieDetailsPage.module.scss';
 // );
 
 const MovieDetailsPage = props => {
-  const [movie, setMovie] = useState(null);
-  const [message, setMessage] = useState('');
-
   const { movieId } = props.match.params;
   const { url, path } = props.match;
   const { history, location } = props;
+
+  const [movie, setMovie] = useState(null);
+  const [message, setMessage] = useState('');
+
+  const [cast, setCast] = useState(null);
+  const [reviews, setReviews] = useState(null);
 
   useEffect(() => {
     moviesApi.fetchMovieDetails(movieId).then(data => {
@@ -38,6 +41,89 @@ const MovieDetailsPage = props => {
       data ?? setMessage('No such movie found');
     });
   }, [movieId]);
+
+  useEffect(() => {
+    switch (location.pathname) {
+      case url:
+      default:
+        setCast({
+          pathname: `${url}/cast`,
+          className: styles.NavLink,
+          activeClassName: styles.NavLinkActive,
+        });
+        setReviews({
+          pathname: `${url}/reviews`,
+          className: styles.NavLink,
+          activeClassName: styles.NavLinkActive,
+        });
+        return;
+
+      case `${url}/cast`:
+        setCast({
+          pathname: `${url}`,
+          className: styles.NavLinkActive,
+          activeClassName: styles.NavLink,
+        });
+        setReviews({
+          pathname: `${url}/reviews`,
+          className: styles.NavLink,
+          activeClassName: styles.NavLinkActive,
+        });
+        return;
+
+      case `${url}/reviews`:
+        setCast({
+          pathname: `${url}/cast`,
+          className: styles.NavLink,
+          activeClassName: styles.NavLinkActive,
+        });
+        setReviews({
+          pathname: `${url}`,
+          className: styles.NavLinkActive,
+          activeClassName: styles.NavLink,
+        });
+        return;
+    }
+
+    // if (location.pathname === url) {
+    //   setCast({
+    //     pathname: `${url}/cast`,
+    //     className: styles.NavLink,
+    //     activeClassName: styles.NavLinkActive,
+    //   });
+    //   setReviews({
+    //     pathname: `${url}/reviews`,
+    //     className: styles.NavLink,
+    //     activeClassName: styles.NavLinkActive,
+    //   });
+    // }
+
+    // if (location.pathname === `${url}/cast`) {
+    //   setCast({
+    //     pathname: `${url}`,
+    //     className: styles.NavLinkActive,
+    //     activeClassName: styles.NavLink,
+    //   });
+    //   setReviews({
+    //     pathname: `${url}/reviews`,
+    //     className: styles.NavLink,
+    //     activeClassName: styles.NavLinkActive,
+    //   });
+    // }
+
+    // if (location.pathname === `${url}/reviews`) {
+    //   setCast({
+    //     pathname: `${url}/cast`,
+    //     className: styles.NavLink,
+    //     activeClassName: styles.NavLinkActive,
+    //   });
+    //   setReviews({
+    //     pathname: `${url}`,
+    //     className: styles.NavLinkActive,
+    //     activeClassName: styles.NavLink,
+    //   });
+    // }
+  }, [location.pathname, url]);
 
   const handleGoBack = () => {
     // location.state && location.state.from
@@ -60,10 +146,10 @@ const MovieDetailsPage = props => {
             <NavLink
               to={{
                 ...location,
-                pathname: `${url}/cast`,
+                pathname: cast.pathname,
               }}
-              className={styles.NavLink}
-              activeClassName={styles.NavLinkActive}
+              className={cast.className}
+              activeClassName={cast.activeClassName}
             >
               Cast
             </NavLink>
@@ -72,10 +158,10 @@ const MovieDetailsPage = props => {
             <NavLink
               to={{
                 ...location,
-                pathname: `${url}/reviews`,
+                pathname: reviews.pathname,
               }}
-              className={styles.NavLink}
-              activeClassName={styles.NavLinkActive}
+              className={reviews.className}
+              activeClassName={reviews.activeClassName}
             >
               Reviews
             </NavLink>
