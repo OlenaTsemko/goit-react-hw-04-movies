@@ -54,9 +54,9 @@ const MoviesPage = props => {
     history.push({
       ...location,
       pathname: location.pathname,
-      search: `?query=${searchMovie}`,
+      search: searchMovie ? `?query=${searchMovie}` : '',
       state: {
-        movies: movies,
+        movies: searchMovie ? movies : [],
       },
     });
   };
